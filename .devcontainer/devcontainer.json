@@ -1,7 +1,14 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {
-    "ghcr.io/balazs23/devcontainers-features/bazel:1": {}
+  "image": "mcr.microsoft.com/devcontainers/universal:2.3.1",
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
   },
-  "onCreateCommand": ["sudo", "ln", "-s", "bazelisk", "/usr/local/bin/bazel"]
+  "features": {
+    "ghcr.io/balazs23/devcontainers-features/bazel:1.0.1": { 
+      "bazelisk": "v1.15.0"
+    }
+  },
+  "containerEnv": { "USE_BAZEL_VERSION": "6.1.1" }
 }
