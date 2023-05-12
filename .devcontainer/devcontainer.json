@@ -9,6 +9,5 @@
     "ghcr.io/balazs23/devcontainers-features/bazel:1.0.1": { 
       "bazelisk": "v1.15.0"
     }
-  },
-  "containerEnv": { "USE_BAZEL_VERSION": "6.1.1" }
+  }
 }
