@@ -1,17 +1,12 @@
 # Bazel Codelab
 
-## Before you get started
-Take a look at these [informational slides](https://docs.google.com/presentation/d/1N1hwmWBn1buu6QM-iPyWnce09u5gA6qckhNWVKnFibU/edit?usp=sharing&resourcekey=0-ReNkM3KNxRsh0Erzl9vagw) to learn about Bazel.
+## Exercise 1: Hello, Bazel!
+1. Edit: `java/src/main/java/bazel/bootcamp/BUILD`
+1. Add a `java_binary` target for the `HelloBazelBootcamp.java` file
+   - [`java_binary` documentation](https://docs.bazel.build/versions/master/be/java.html#java_binary)
+   - Hint: Look at the next step for ideas on the target's name.
+1. Run the binary using `bazel run //java/src/main/java/bazel/bootcamp:HelloBazelBootcamp`
 
-## Exercise 0 - Introduction to Bazel
-Welcome! In this course, we will be writing Bazel BUILD files, in order to create the build system for the provided code. At the end, using only Bazel, we will build:
-* Protobuf and gRPC generated code for Go and Java.
-* A Go gRPC server that listens for Protobuf messages, and prints received messages to a status page.
-* A Java client that connects to our server, and sends log messages via gRPC.
-
-Note the file structure for this project:
-* Where are the protobuf files?
-* Where is the Java and Go code?
-* How many workspaces are present in this project?
-* How many packages are currently present in the root workspace?
-* How many packages do you think we will need, when we are done?
+## Questions
+1. Which fields are strictly necessary?
+2. Why did we not have to import `java_binary`?
