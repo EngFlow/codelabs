@@ -1,9 +1,12 @@
 # Bazel Codelab
 
-Exercise 3: Interpreting Bazel errors
-====
-In this exercise, we will build our Java gRPC logging client, and connect it to the go gRPC listener.
+## Exercise 4: Java client unit tests
+1.  Edit the `BUILD` file for `JavaLoggingClientLibraryTest.java`
+    <details> <summary>Hint</summary>Names matter for tests. The <code>java_test</code> for this file should be named <code>JavaLoggingClientLibraryTest</code></details>
+1.  Edit the `BUILD` file for `JavaLoggingClientTest.java`
+1.  Run the tests using `bazel test`
 
+<<<<<<< HEAD
 Let's start by opening //proto/logger/BUILD. Notice that there are now two new definitions:
 * A `java_proto_library` target, called `"logger_java_proto"`
 * A `java_grpc_library` target, called `"logger_java_grpc"`
@@ -93,9 +96,10 @@ Relevant Documentation
 - [`java_grpc_library` documentation](https://grpc.io/docs/reference/java/generated-code.html) (look towards the bottom of the page for a Bazel example)
 - [`java_library` documentation](https://docs.bazel.build/versions/master/be/java.html#java_library)
 - [`java_binary` documentation](https://docs.bazel.build/versions/master/be/java.html#java_binary)
+=======
+## Relevant Documentation
+- [`java_test` documentation](https://docs.bazel.build/versions/master/be/java.html#java_test)
+>>>>>>> 70beead (Java tests readme)
 
 Questions
 ====
-1. Where is `@io_grpc_grpc_java` coming from?
-2. Why do we need to add gRPC, protobuf, and local dependencies for our targets?
-3. Why did the code `build` successfully without `netty`, but fail to run?
