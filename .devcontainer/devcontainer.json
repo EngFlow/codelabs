@@ -10,5 +10,5 @@
       "bazelisk": "v1.15.0"
     }
   },
-  "postCreateCommand": "bash .devcontainer/build-caches.sh"
+  "onCreateCommand": "bash .devcontainer/build-caches.sh"
 }
