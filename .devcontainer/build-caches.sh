@@ -1,7 +1,4 @@
-# This file is used for Bazel CI to write the BUILD files for the project.
-
-# You can use it to see the final solutions but note that it will delete your existing
-# BUILD files if you started working.
+#!/bin/bash
 
 # generate java BUILD file
 cat > java/src/main/java/bazel/bootcamp/BUILD <<EOF
@@ -66,20 +63,7 @@ java_grpc_library(
 )
 EOF
 
-
-# write shell test
-cat > tests/BUILD <<EOF
-sh_test(
-    name = "integration_test",
-    srcs = ["integrationtest.sh"],
-    data = [
-        "//go/cmd/server",
-        "//java/src/main/java/bazel/bootcamp:JavaLoggingClient",
-    ],
-)
-EOF
-
-# write WORKSPACE file
-${SHELL} ./generate_workspace.sh
-
 bazel run //:gazelle
+bazel build //...
+git reset --hard
+git clean -f
