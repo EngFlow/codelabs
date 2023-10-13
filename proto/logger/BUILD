@@ -1,7 +1,7 @@
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
 load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
-#load("@io_grpc_grpc_java//:java_grpc_library.bzl", "java_grpc_library")
+load("@io_grpc_grpc_java//:java_grpc_library.bzl", "java_grpc_library")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -32,4 +32,5 @@ java_proto_library(
 java_grpc_library(
     name = "logger_java_grpc",
     srcs = [":logger_proto"],
+    deps = [":logger_java_proto"],
 )
