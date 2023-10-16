@@ -10,3 +10,9 @@
 ## Questions
 1. Which fields are strictly necessary?
 2. Why did we not have to import `java_binary`?
+
+## Next Exercise
+In your terminal, run the following command to get to the next exercise:
+```
+./next_exercise.sh
+```
