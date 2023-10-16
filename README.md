@@ -13,12 +13,15 @@ Let's start by opening //proto/logger/BUILD. Notice that there are now two new d
    bazel build //proto/logger:logger_java_proto
    ```
 
-2. Note the error. This indicates that there is a syntax issue with our build file, in a separate definition.
+1. Note the error. This indicates that there is a syntax issue with our build file. Is `java_grpc_library` properly imported? Fix the issue and try to build again.
 
-3. Add the Java proto library as a dependency to `logger_java_grpc`, and rebuild the target. You should see the `logger_java_proto` target succeed.
+1. Now, it looks like we are missing a field in a different target. Add the following line to `logger_java_grpc` under `srcs`, and rebuild the target. You should see the `logger_java_proto` target succeed.
+   ```
+       deps = [":logger_java_proto"],
+   ```
 
 
-4. Build the `logger_java_grpc`
+1. Build `logger_java_grpc`
    ```
    bazel build //proto/logger:logger_java_grpc
    ```
@@ -76,11 +79,11 @@ Let's test these targets, like we did with the proto targets before.
 Putting it all together
 ===
 
-1. In shell 1, run the Java binary target:
+1. First, run the Java binary target:
    ```
    bazel run //java/src/main/java/bazel/bootcamp:JavaLoggingClientLibrary
    ```
-2. Open a new shell, and run this command:
+2. Open a new terminal, and run this command to start the Go server:
    ```
    bazel run //go/cmd/server
    ```
