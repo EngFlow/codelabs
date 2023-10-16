@@ -21,3 +21,9 @@
   3. Why did gazelle create a library target _and_ a binary target?
   4. Why did gazelle create `proto` targets?
 </details>
+
+## Next Exercise
+In your terminal, run the following command to get to the next exercise:
+```
+./next_exercise.sh
+```
