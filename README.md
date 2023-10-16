@@ -1,105 +1,57 @@
 # Bazel Codelab
 
 ## Exercise 4: Java client unit tests
-1.  Edit the `BUILD` file for `JavaLoggingClientLibraryTest.java`
-    <details> <summary>Hint</summary>Names matter for tests. The <code>java_test</code> for this file should be named <code>JavaLoggingClientLibraryTest</code></details>
-1.  Edit the `BUILD` file for `JavaLoggingClientTest.java`
-1.  Run the tests using `bazel test`
 
-<<<<<<< HEAD
-Let's start by opening //proto/logger/BUILD. Notice that there are now two new definitions:
-* A `java_proto_library` target, called `"logger_java_proto"`
-* A `java_grpc_library` target, called `"logger_java_grpc"`
+In this exercise, we will build tests for the Java classes that were added in the last exercise. Look in `//java/src/main/java/bazel/bootcamp`. You should see two new files:
+* `JavaLoggingClientLibraryTest.java`
+* `JavaLoggingClientTest.java`
 
-1. Build the `:logger_java_proto` target.
-   ```
-   bazel build //proto/logger:logger_java_proto
-   ```
+1.  Edit the `BUILD` file for `JavaLoggingClientLibraryTest.java`, and add the following entry:
+    ```
+    java_test(
+      name = "JavaLoggingClientLibraryTest",
+      srcs = ["JavaLoggingClientLibraryTest.java"],
+      deps = [":JavaLoggingClientLibrary"],
+    )
+    ```
+    Now, run the test using `bazel test`.
+    <details>
+      <summary>Hint</summary>
 
-2. Note the error. This indicates that there is a syntax issue with our build file, in a separate definition.
+      ```
+      bazel test //java/src/main/java/bazel/bootcamp:JavaLoggingClientLibraryTest
+      ```
+    </details>
+1.  The test fails, but the cause is unclear. Run the test again with `--test_output=errors`, to see the actual error.
+1.  What did we do last time we encountered this error? Can we do the same thing here?
+    <details>
+      <summary>Hint</summary>
 
-3. Add the Java proto library as a dependency to `logger_java_grpc`, and rebuild the target. You should see the `logger_java_proto` target succeed.
+      Add the following `runtime_dep` to your `JavaLoggingClientLibraryTest` target.
+      ```
+      runtime_deps = ["@io_grpc_grpc_java//netty"],
+      ``` 
+    </details>
+1.  Using the example from above, create a separate test target for `JavaLoggingClientTest.java`
 
+## Experimenting with parameters
+Now that our tests work, let's try experimenting with a few flags. Note that `-t-` turns `cache_test_results` off, and allows us to experiment with the same test repeatedly without getting cached results.
 
-4. Build the `logger_java_grpc`
-   ```
-   bazel build //proto/logger:logger_java_grpc
-   ```
+1. Run your tests with `--runs_per_test=10`. Note the difference.
+1. Try running with `--test_output=all -t-`. Compare to `--test_output=errors -t-`
+1. How would you run only one test in `JavaLoggingClientLibraryTest`?
+   <details>
+      <summary>Hint</summary>
 
-Once both proto and grpc libraries successfully build, move on to the next section.
+      ```
+      bazel test //java/src/main/java/bazel/bootcamp:JavaLoggingClientLibraryTest --test_filter=testHello -t-
+      ```
+    </details>
 
-Part 2: Fix errors in Java targets
-========
-
-Now, let's open the `BUILD` file in `java/src/main/java/bazel/bootcamp/`. Notice there are two targets defined here.
-* A `java_library` target, called `"JavaLoggingClientLibrary"`
-* A `java_binary` target, called `"JavaLoggingClient"`
-
-A common pattern in Bazel is to have a binary target that is separate from a library target, and which inherits the library. This allows for more incremental target structure. In this `BUILD` file, our `JavaLoggingClient` should be executable. And, it should depend on the `JavaLoggingClientLibrary`.
-
-Let's test these targets, like we did with the proto targets before.
-
-1. Start by building the library.
-   ```
-   bazel build //java/src/main/java/bazel/bootcamp:JavaLoggingClientLibrary
-   ```
-
-   Look at the first error. Looks like we have a syntax error on line 9. Fix it, and try the build again.
-
-2. Now, the error has changed. This time, the suggestions are quite helpful.
-
-   Add the suggested dependencies to `JavaLoggingClientLibrary`:
-   ```
-         "//proto/logger:logger_java_proto",
-         "@io_grpc_grpc_java//api",
-   ```
-
-3. Now, let's build the executable client.
-
-   ```
-   bazel build //java/src/main/java/bazel/bootcamp:JavaLoggingClient
-   ```
-   Looks like we have a missing dependency. You might have noticed that the client's dependency list is empty. Let's add `:JavaLoggingClientLibrary` to the `deps` list for `:JavaLoggingClient`, since that is the missing symbol reported in our error.
-
-4. Finally, let's try running the client.
-
-   ```
-   bazel run //java/src/main/java/bazel/bootcamp:JavaLoggingClient
-   ```
-   You will likely have gotten an error about a missing channel service provider. This is a runtime dependency required by gRPC. Let's add the following to our Java `BUILD` file, below `deps`:
-   ```
-       runtime_deps = ["@io_grpc_grpc_java//netty"],
-   ```
-   Run the client again. If successful, you should see the following message in the terminal:
-   ```
-   Enter log messages to send to the server, enter 'exit' to stop the client.
-   ```
-
-
-Putting it all together
-===
-
-1. In shell 1, run the Java binary target:
-   ```
-   bazel run //java/src/main/java/bazel/bootcamp:JavaLoggingClientLibrary
-   ```
-2. Open a new shell, and run this command:
-   ```
-   bazel run //go/cmd/server
-   ```
-3. Open the `PORTS` menu in VSCode, and click on 8080 to open the `go` server in a new tab.
-4. Send messages from the client to the server, and refresh the `go` server webpage to see the message.
-
-Relevant Documentation
-=====
-- [`java_proto_library` documentation](https://docs.bazel.build/versions/master/be/java.html#java_proto_library)
-- [`java_grpc_library` documentation](https://grpc.io/docs/reference/java/generated-code.html) (look towards the bottom of the page for a Bazel example)
-- [`java_library` documentation](https://docs.bazel.build/versions/master/be/java.html#java_library)
-- [`java_binary` documentation](https://docs.bazel.build/versions/master/be/java.html#java_binary)
-=======
 ## Relevant Documentation
 - [`java_test` documentation](https://docs.bazel.build/versions/master/be/java.html#java_test)
->>>>>>> 70beead (Java tests readme)
+- [`bazel test` options](https://bazel.build/docs/user-manual#bazel-test-options)
+- [bazel `cache_test_results` flag](https://bazel.build/docs/user-manual#cache-test-results)
 
 Questions
 ====
