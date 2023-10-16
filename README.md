@@ -41,11 +41,11 @@ Let's test these targets, like we did with the proto targets before.
    bazel build //java/src/main/java/bazel/bootcamp:JavaLoggingClientLibrary
    ```
 
-   Look at the first error. Looks like we are missing a comma on line 9. Add it, and try the build again.
+   Look at the first error. Looks like we have a syntax error on line 9. Fix it, and try the build again.
 
-2. Now, the error has changed.
+2. Now, the error has changed. This time, the suggestions are quite helpful.
 
-   Add the following dependencies to `JavaLoggingClientLibrary`:
+   Add the suggested dependencies to `JavaLoggingClientLibrary`:
    ```
          "//proto/logger:logger_java_proto",
          "@io_grpc_grpc_java//api",
@@ -56,15 +56,21 @@ Let's test these targets, like we did with the proto targets before.
    ```
    bazel build //java/src/main/java/bazel/bootcamp:JavaLoggingClient
    ```
-   You might have noticed that the client's dependency list is empty. Let's add `:JavaLoggingClientLibrary` to the dependency list.
+   Looks like we have a missing dependency. You might have noticed that the client's dependency list is empty. Let's add `:JavaLoggingClientLibrary` to the `deps` list for `:JavaLoggingClient`, since that is the missing symbol reported in our error.
 
 4. Finally, let's try running the client.
 
    ```
    bazel run //java/src/main/java/bazel/bootcamp:JavaLoggingClient
    ```
-   You will likely have gotten an error about
-
+   You will likely have gotten an error about a missing channel service provider. This is a runtime dependency required by gRPC. Let's add the following to our Java `BUILD` file, below `deps`:
+   ```
+       runtime_deps = ["@io_grpc_grpc_java//netty"],
+   ```
+   Run the client again. If successful, you should see the following message in the terminal:
+   ```
+   Enter log messages to send to the server, enter 'exit' to stop the client.
+   ```
 
 
 Putting it all together
@@ -74,18 +80,12 @@ Putting it all together
    ```
    bazel run //java/src/main/java/bazel/bootcamp:JavaLoggingClientLibrary
    ```
-2. In shell 2, run the Go server
+2. Open a new shell, and run this command:
    ```
    bazel run //go/cmd/server
    ```
-3. Send messages from the client to the server, and view them in the application window
-
-Hint
-====
-<details>
-   <summary>Expand here</summary>
-If you get a `ProviderNotFoundException`, you will need to add `"@io_grpc_grpc_java//netty"` as a `runtime_dep`.
-</details>
+3. Open the `PORTS` menu in VSCode, and click on 8080 to open the `go` server in a new tab.
+4. Send messages from the client to the server, and refresh the `go` server webpage to see the message.
 
 Relevant Documentation
 =====
