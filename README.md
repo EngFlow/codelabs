@@ -15,3 +15,9 @@ Note the file structure for this project:
 * How many workspaces are present in this project?
 * How many packages are currently present in the root workspace?
 * How many packages do you think we will need, when we are done?
+
+## Next Exercise
+In your terminal, run the following command to get to the next exercise:
+```
+./next_exercise.sh
+```
