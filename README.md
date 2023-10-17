@@ -2,15 +2,22 @@
 
 ## Exercise 2: Gazelle
 1. Look at the contents of `go/cmd/server`
-2. Run `bazel run //:gazelle`. Observe the output.
-3. Run `git status` to see what has changed.
-4. Study the contents of any changed files.
-5. Run the new binary target that you find.
+1. Run the following command. Observe the output.
+   ```
+   bazel run //:gazelle
+   ```
+1. Run `git status` to see what has changed.
+1. Study the contents of any changed files.
+1. Run the new binary target that you find.
    <details>
      <summary>Hint</summary>
    
-     Look in `go/cmd/server/BUILD` for a `go_binary` target to run.
+     Run the following command:
+     ```
+     bazel run //go/cmd/server
+     ```
    </details>
+1. In the dialog that pops up in the bottom right, click on `Open in Browser`. If you miss the dialog, you can click on `PORTS`, right click on `8081`, and click `Open in Browser`
 
 ## Questions
 <details>
