@@ -1,7 +1,7 @@
 # Bazel Codelab
 
 ## Before you get started
-Take a look at these [informational slides](https://docs.google.com/presentation/d/1N1hwmWBn1buu6QM-iPyWnce09u5gA6qckhNWVKnFibU/edit?usp=sharing&resourcekey=0-ReNkM3KNxRsh0Erzl9vagw) to learn about Bazel.
+Take a look at these [informational slides](https://docs.google.com/presentation/d/1CpgAwaPEjJI-q-29FhGBQk0M7iZDxbPAJYjI8s57KmA/edit#slide=id.p) to learn about Bazel.
 
 ## Exercise 0 - Introduction to Bazel
 Welcome! In this course, we will be writing Bazel BUILD files, in order to create the build system for the provided code. At the end, using only Bazel, we will build:
