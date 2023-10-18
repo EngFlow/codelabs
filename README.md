@@ -1,7 +1,7 @@
 # Bazel Codelab
 
 ## Before you get started
-Take a look at these [informational slides](https://docs.google.com/presentation/d/1JUnNUTQX6tzDgMKiIRbEpx9OlSnHnVx6XgxXRCESPqk/edit#slide=id.p) to learn about Bazel.
+Take a look at these [informational slides](https://docs.google.com/presentation/d/1CpgAwaPEjJI-q-29FhGBQk0M7iZDxbPAJYjI8s57KmA/edit#slide=id.p) to learn about Bazel.
 
 ## Codelab instructions
 1. Click on `Code` -> `Create codespace on main` to launch a new codespace.
