@@ -151,7 +151,7 @@ Putting it all together
 
 1. First, run the Java binary target:
    ```
-   bazel run //java/src/main/java/bazel/bootcamp:JavaLoggingClientLibrary
+   bazel run //java/src/main/java/bazel/bootcamp:JavaLoggingClient
    ```
 1. Open a new terminal, and run this command to start the Go server:
    ```
