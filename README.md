@@ -13,4 +13,9 @@ Take a look at these [informational slides](https://docs.google.com/presentation
 ```
 
 ### Note
-`./next_exercise.sh` is destructive. If you would like to save any work, clone locally and commit before running any scripts.
+`./next_exercise.sh` **is destructive**:
+- it removes any untracked files you created (via `git clean`)
+- it reverts any changes to tracked files (via `git reset --hard`)
+- ...before checking out the branch for the next exercise.
+
+If you would like to save any work, clone locally and commit before running any scripts.
