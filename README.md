@@ -17,7 +17,7 @@
      bazel run //go/cmd/server
      ```
    </details>
-1. In the dialog that pops up in the bottom right, click on `Open in Browser`. If you miss the dialog, you can click on `PORTS`, right click on `8081`, and click `Open in Browser`
+1. If you use GitHub Codespace: In the dialog that pops up in the bottom right, click on `Open in Browser`. If you miss the dialog, you can click on `PORTS`, right click on `8081`, and click `Open in Browser`
 
 ## Questions
 <details>
