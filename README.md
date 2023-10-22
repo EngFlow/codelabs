@@ -10,7 +10,7 @@ In this exercise, we will build and execute a `java_binary` target. Start by ope
      ```
      java_binary(
         name = "HelloBazelBootcamp",
-        srcs = "HelloBazelBootcamp.java",
+        srcs = ["HelloBazelBootcamp.java"],
      )
      ```
    </details>
