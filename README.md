@@ -83,6 +83,3 @@ Now that our tests work, let's try experimenting with a few flags. Note that `--
 - [`java_test` documentation](https://docs.bazel.build/versions/master/be/java.html#java_test)
 - [`bazel test` options](https://bazel.build/docs/user-manual#bazel-test-options)
 - [bazel `cache_test_results` flag](https://bazel.build/docs/user-manual#cache-test-results)
-
-Questions
-====
