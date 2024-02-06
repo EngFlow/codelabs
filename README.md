@@ -1,20 +1,32 @@
 # Bazel Codelab
 
-## Before you get started
-Take a look at these [informational slides](https://docs.google.com/presentation/d/1CpgAwaPEjJI-q-29FhGBQk0M7iZDxbPAJYjI8s57KmA/edit#slide=id.p) to learn about Bazel.
+## Exercise 1 - Get To Know Bazel Commands
+In this exercise, we will be getting to know Bazel by running `build` and `run` commands.
 
-## Exercise 0 - Introduction to Bazel
-Welcome! In this course, we will be writing Bazel BUILD files, in order to create the build system for the provided code. At the end, using only Bazel, we will build:
-* Protobuf and gRPC generated code for Go and Java.
-* A Go gRPC server that listens for Protobuf messages, and prints received messages to a status page.
-* A Java client that connects to our server, and sends log messages via gRPC.
-
-Note the file structure for this project:
-* Where are the protobuf files?
-* Where is the Java and Go code?
-* How many workspaces are present in this project?
-* How many packages are currently present in the root workspace?
-* How many packages do you think we will need, when we are done?
+1. Build the target `HelloBazelBootcamp` in `java/src/main/java/bazel/bootcamp`.
+    <details><summary>Solution</summary>
+    ```
+    bazel build //java/src/main/java/bazel/bootcamp:HelloBazelBootcamp
+    ```
+    </details>
+1. Build all targets in `java/src/main/java/bazel/bootcamp`.
+   <details><summary>Solution</summary>
+    ```
+    bazel build //java/src/main/java/bazel/bootcamp:...
+    ```
+    </details>
+1. Run `HelloBazelBootcamp`.
+   <details><summary>Solution</summary>
+    ```
+    bazel run //java/src/main/java/bazel/bootcamp:HelloBazelBootcamp
+    ```
+    </details>
+1. Run `HelloBazelBootcamp`, and pass in your name as a parameter.
+   <details><summary>Solution</summary>
+    ```
+    bazel run //java/src/main/java/bazel/bootcamp:HelloBazelBootcamp -- "Jane"
+    ```
+    </details>
 
 ## Next Exercise
 In your terminal, run the following command to get to the next exercise:
