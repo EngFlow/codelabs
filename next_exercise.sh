@@ -2,4 +2,4 @@
 
 git reset --hard
 git clean -f
-git checkout exercise-004-java-tests
+git checkout exercise-005-queries

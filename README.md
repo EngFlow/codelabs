@@ -1,6 +1,6 @@
 # Bazel Codelab
 
-## Exercise 3: Interpreting Bazel errors
+## Exercise 4: Interpreting Bazel errors
 ### Part 1: Syntax errors
 In this exercise, we will build our Java gRPC logging client, and connect it to the go gRPC listener.
 
