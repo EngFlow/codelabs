@@ -1,8 +1,3 @@
-java_binary(
-    name = "HelloBazelBootcamp",
-    srcs = ["HelloBazelBootcamp.java"],
-)
-
 java_library(
     name = "JavaLoggingClientLibrary",
     srcs = ["JavaLoggingClientLibrary.java"],
