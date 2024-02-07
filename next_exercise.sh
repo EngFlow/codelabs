@@ -2,4 +2,4 @@
 
 git reset --hard
 git clean -f
-git checkout exercise-002-go-server
+git checkout exercise-003-java-client

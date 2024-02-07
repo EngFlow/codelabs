@@ -1,7 +1,7 @@
 # Bazel Codelab
 
-## Exercise 1: Hello, Bazel!
-In this exercise, we will build and execute a `java_binary` target. Start by opening `java/src/main/java/bazel/bootcamp/BUILD`:
+## Exercise 2: Hello, Bazel!
+In this exercise, we will write the rule invocation for the `java_binary` that you ran in the last exercise. Start by opening `java/src/main/java/bazel/bootcamp/BUILD`:
 
 1. Add a `java_binary` target for the `HelloBazelBootcamp.java` file
    <details><summary>Solution</summary>
