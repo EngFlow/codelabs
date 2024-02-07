@@ -5,24 +5,28 @@ In this exercise, we will be getting to know Bazel by running `build` and `run` 
 
 1. Build the target `HelloBazelBootcamp` in `java/src/main/java/bazel/bootcamp`.
     <details><summary>Solution</summary>
+
     ```
     bazel build //java/src/main/java/bazel/bootcamp:HelloBazelBootcamp
     ```
     </details>
 1. Build all targets in `java/src/main/java/bazel/bootcamp`.
    <details><summary>Solution</summary>
+
     ```
     bazel build //java/src/main/java/bazel/bootcamp:...
     ```
     </details>
 1. Run `HelloBazelBootcamp`.
    <details><summary>Solution</summary>
+
     ```
     bazel run //java/src/main/java/bazel/bootcamp:HelloBazelBootcamp
     ```
     </details>
 1. Run `HelloBazelBootcamp`, and pass in your name as a parameter.
    <details><summary>Solution</summary>
+   
     ```
     bazel run //java/src/main/java/bazel/bootcamp:HelloBazelBootcamp -- "Jane"
     ```
