@@ -1,8 +1,8 @@
 # Bazel Codelab
 
-## Exercise 4: Java client unit tests
+## Exercise 3: Java client unit tests
 
-In this exercise, we will build tests for the Java classes that were added in the last exercise. Look in `//java/src/main/java/bazel/bootcamp`. You should see two new files:
+In this exercise, we will build tests for several Java classes. Look in `//java/src/main/java/bazel/bootcamp`. You should see two new files:
 * `JavaLoggingClientLibraryTest.java`
 * `JavaLoggingClientTest.java`
 
