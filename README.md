@@ -8,6 +8,13 @@ Let's start by opening `//proto/logger/BUILD`. Notice that there are now two new
 * A `java_proto_library` target, called `"logger_java_proto"`
 * A `java_grpc_library` target, called `"logger_java_grpc"`
 
+The dependency graph for these dependencies looks like this:
+
+```mermaid
+graph TD;
+    logger_java_grpc-->logger_java_proto-->logger_proto;
+```
+
 1. Build the `:logger_java_proto` target.
    <details><summary>Hint</summary>
 
@@ -16,17 +23,6 @@ Let's start by opening `//proto/logger/BUILD`. Notice that there are now two new
     ```
    </details>
 1. Note the error. This indicates that there is a syntax issue with our build file. Fix the issue and try to build again.
-   <details><summary>Hint</summary>
-
-   Is `java_grpc_library` properly imported?
-   </details>
-
-   <details><summary>Solution</summary>
-
-   Uncomment line 4 of `//proto/logger/BUILD`
-   </details>
-
-1. Re-run your last build, and fix the next syntax error. 
    <details><summary>Hint</summary>
 
    It looks like we are missing a field in a different target in this file. What should the dependencies of `logger_java_grpc` look like? Check the documentation section at the bottom if you need help with the syntax for this rule.
@@ -56,6 +52,16 @@ Once both proto and grpc libraries successfully build, move on to the next secti
 Now, let's open the `BUILD` file in `java/src/main/java/bazel/bootcamp/`. Notice there are two targets defined here.
 * A `java_library` target, called `"JavaLoggingClientLibrary"`
 * A `java_binary` target, called `"JavaLoggingClient"`
+
+The dependency graph for these dependencies should like this, at the end:
+
+```mermaid
+graph TD;
+    JavaLoggingClient-->JavaLoggingClientLibrary-->logger_java_grpc;
+    JavaLoggingClientLibrary-->logger_java_proto;
+    JavaLoggingClientLibrary-->A["@io_grpc_grpc_java//api"];
+    JavaLoggingClient-->netty;
+```
 
 A common pattern in Bazel is to have a binary target that is separate from a library target, and which inherits the library. This allows for more incremental target structure. In this `BUILD` file, our `JavaLoggingClient` should be executable. And, it should depend on the `JavaLoggingClientLibrary`.
 
@@ -144,21 +150,6 @@ If successful, you should see the following message in the terminal:
 ```
 Enter log messages to send to the server, enter 'exit' to stop the client.
 ```
-
-
-Putting it all together
-===
-
-1. First, run the Java binary target:
-   ```
-   bazel run //java/src/main/java/bazel/bootcamp:JavaLoggingClient
-   ```
-1. Open a new terminal, and run this command to start the Go server:
-   ```
-   bazel run //go/cmd/server
-   ```
-1. Open the `PORTS` menu in VSCode, and click on 8080 to open the `go` server in a new tab.
-1. Send messages from the client to the server, and refresh the `go` server webpage to see the message.
 
 Relevant Documentation
 =====
