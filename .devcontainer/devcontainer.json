@@ -10,5 +10,12 @@
       "bazelisk": "v1.15.0"
     }
   },
-  "onCreateCommand": "bash .devcontainer/build-caches.sh"
+  "onCreateCommand": "bash .devcontainer/build-caches.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bierner.markdown-mermaid"
+      ]
+    }
+  }
 }
