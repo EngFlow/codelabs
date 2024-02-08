@@ -163,3 +163,9 @@ Questions
 1. Where is `@io_grpc_grpc_java` coming from?
 2. Why do we need to add gRPC, protobuf, and local dependencies for our targets?
 3. Why did the code `build` successfully without `netty`, but fail to run?
+
+## Next Exercise
+In your terminal, run the following command to get to the next exercise:
+```
+./next_exercise.sh
+```
