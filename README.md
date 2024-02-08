@@ -14,7 +14,7 @@ In this exercise, we will be getting to know Bazel by running `build` and `run` 
    <details><summary>Solution</summary>
 
     ```
-    bazel build //java/src/main/java/bazel/bootcamp:...
+    bazel build //java/src/main/java/bazel/bootcamp/...
     ```
     </details>
 1. Run `HelloBazelBootcamp`.
