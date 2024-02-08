@@ -2,9 +2,20 @@
 
 ## Exercise 3: Java client unit tests
 
-In this exercise, we will build tests for several Java classes. Look in `//java/src/main/java/bazel/bootcamp`. You should see two new files:
+In this exercise, we will build tests for several Java classes. Look in `//java/src/main/java/bazel/bootcamp`. You should see four new files:
+* `JavaLoggingClientLibrary.java`
+* `JavaLoggingClient.java`
 * `JavaLoggingClientLibraryTest.java`
 * `JavaLoggingClientTest.java`
+
+### Test structure
+
+In the new files, `JavaLoggingClientLibraryTest.java` tests the functionality of `JavaLoggingClientLibrary`, and `JavaLoggingClientTest.java` tests the functionality of `JavaLoggingClient`. 
+
+* Look at the build files for the target `JavaLoggingClientLibrary`. What is its relationship to `JavaLoggingClient`?
+* What should we expect about the relationship of these tests, when we create their test targets?
+
+### Create `java_test` targets
 
 1.  Edit the `BUILD` file for `JavaLoggingClientLibraryTest.java`, and add the following entry:
     ```
@@ -38,7 +49,7 @@ In this exercise, we will build tests for several Java classes. Look in `//java/
     ```
     </details>
 
-1.  Look at the error. It should look familiar. What did we do last time we encountered this error? Can we do the same thing here?
+1.  Look at the error. It indicates that we should add a dependency, but the dependency was not needed to build the test. Is there a runtime dependency in the definition for `JavaLoggingClient` that looks relevant here?
     <details>
       <summary>Solution</summary>
 
