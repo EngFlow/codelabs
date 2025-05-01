@@ -1,0 +1,4 @@
+common --incompatible_strict_action_env
+common --nostamp
+build  --cxxopt='-std=c++17'
+build  --host_cxxopt='-std=c++17'

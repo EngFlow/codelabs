@@ -1,13 +1,17 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2.3.1",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
   "hostRequirements": {
     "cpus": 4,
     "memory": "8gb",
     "storage": "32gb"
   },
+  "containerUser": "vscode",
   "features": {
     "ghcr.io/balazs23/devcontainers-features/bazel:1.0.1": { 
       "bazelisk": "v1.15.0"
+    },
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "17"
     }
   },
   "onCreateCommand": "bash .devcontainer/build-caches.sh",
