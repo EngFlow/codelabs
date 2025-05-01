@@ -1,36 +1,30 @@
 # Bazel Codelab
 
-## Exercise 1 - Get To Know Bazel Commands
-In this exercise, we will be getting to know Bazel by running `build` and `run` commands.
+## Exercise 2: Hello, Bazel!
+In this exercise, we will write the rule invocation for the `java_binary` that you ran in the last exercise. Start by opening `java/src/main/java/bazel/bootcamp/BUILD`:
 
-1. Build the target `HelloBazelBootcamp` in `java/src/main/java/bazel/bootcamp`.
-    <details><summary>Solution</summary>
-
-    ```
-    bazel build //java/src/main/java/bazel/bootcamp:HelloBazelBootcamp
-    ```
-    </details>
-1. Build all targets in `java/src/main/java/bazel/bootcamp`.
+1. Add a `java_binary` target for the `HelloBazelBootcamp.java` file
    <details><summary>Solution</summary>
 
-    ```
-    bazel build //java/src/main/java/bazel/bootcamp/...
-    ```
-    </details>
-1. Run `HelloBazelBootcamp`.
-   <details><summary>Solution</summary>
+    Add the following to your build file.
+     ```
+     java_binary(
+        name = "HelloBazelBootcamp",
+        srcs = ["HelloBazelBootcamp.java"],
+     )
+     ```
+   </details>
+1. Run the binary using the following command:
+   ```
+   bazel run //java/src/main/java/bazel/bootcamp:HelloBazelBootcamp
+   ```
 
-    ```
-    bazel run //java/src/main/java/bazel/bootcamp:HelloBazelBootcamp
-    ```
-    </details>
-1. Run `HelloBazelBootcamp`, and pass in your name as a parameter.
-   <details><summary>Solution</summary>
-   
-    ```
-    bazel run //java/src/main/java/bazel/bootcamp:HelloBazelBootcamp -- "Jane"
-    ```
-    </details>
+## Questions
+1. Which fields are strictly necessary?
+2. Why did we not have to import `java_binary`?
+
+## Documentation
+- [`java_binary` documentation](https://docs.bazel.build/versions/master/be/java.html#java_binary)
 
 ## Next Exercise
 In your terminal, run the following command to get to the next exercise:
