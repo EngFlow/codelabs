@@ -2,4 +2,4 @@
 
 git reset --hard
 git clean -f
-git checkout exercise-001-get-to-know-bazel-commands
+git checkout exercise-002-hello-bazel
