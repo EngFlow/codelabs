@@ -32,4 +32,5 @@ java_proto_library(
 java_grpc_library(
     name = "logger_java_grpc",
     srcs = [":logger_proto"],
+    deps = [":logger_java_proto"],
 )
