@@ -25,6 +25,9 @@ In the new files, `JavaLoggingClientLibraryTest.java` tests the functionality of
       deps = [":JavaLoggingClientLibrary"],
     )
     ```
+
+    **Note**: If you are adding the first usage of a new rule, you will also need to add a `load` statement. Can you figure out what that is?
+
     Now, run the test using `bazel test`.
     <details>
       <summary>Hint</summary>
@@ -55,7 +58,7 @@ In the new files, `JavaLoggingClientLibraryTest.java` tests the functionality of
 
       Add the following `runtime_dep` to your `JavaLoggingClientLibraryTest` target.
       ```
-      runtime_deps = ["@io_grpc_grpc_java//netty"],
+      runtime_deps = ["@grpc_java//netty"],
       ``` 
     </details>
 1.  Using the example from above, create and run a separate test target for `JavaLoggingClientTest.java`
@@ -91,6 +94,6 @@ Now that our tests work, let's try experimenting with a few flags. Note that `--
     </details>
 
 ## Relevant Documentation
-- [`java_test` documentation](https://docs.bazel.build/versions/master/be/java.html#java_test)
+- [`java_test` documentation](https://bazel.build/reference/be/java#java_test)
 - [`bazel test` options](https://bazel.build/docs/user-manual#bazel-test-options)
 - [bazel `cache_test_results` flag](https://bazel.build/docs/user-manual#cache-test-results)
