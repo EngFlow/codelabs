@@ -30,14 +30,11 @@ graph TD;
    
    <details><summary>Solution</summary>
    
-   Add the following line to `logger_java_grpc` under `srcs` (line 34), and rebuild `logger_java_proto`.
+   Add the following line to `logger_java_grpc` under `srcs` (line 35), and rebuild `logger_java_proto`.
    ```
        deps = [":logger_java_proto"],
    ```
    </details>
-
-    <details>
-      <summary>Solution</summary>
 
 1. With the syntax errors fixed in this build file, you should now be able to build `logger_java_grpc`
    <details><summary>Solution</summary>
@@ -61,7 +58,7 @@ The dependency graph for these dependencies should like this, at the end:
 graph TD;
     JavaLoggingClient-->JavaLoggingClientLibrary-->logger_java_grpc;
     JavaLoggingClientLibrary-->logger_java_proto;
-    JavaLoggingClientLibrary-->A["@io_grpc_grpc_java//api"];
+    JavaLoggingClientLibrary-->A["@grpc_java//api"];
     JavaLoggingClient-->netty;
 ```
 
@@ -100,7 +97,7 @@ Let's test these targets, like we did with the proto targets before.
    Add the suggested dependencies to `JavaLoggingClientLibrary`:
    ```
          "//proto/logger:logger_java_proto",
-         "@io_grpc_grpc_java//api",
+         "@grpc_java//api",
    ```
    And then run this command:
    ```
@@ -143,7 +140,7 @@ Let's test these targets, like we did with the proto targets before.
    ```
    You will likely have gotten an error about a missing channel service provider. This is a runtime dependency required by gRPC. Add the following to our Java `BUILD` file, below `deps`:
    ```
-    runtime_deps = ["@io_grpc_grpc_java//netty"],
+    runtime_deps = ["@grpc_java//netty"],
    ```
    Run the command again. It should succeed this time.
    </details>
@@ -155,14 +152,14 @@ Enter log messages to send to the server, enter 'exit' to stop the client.
 
 Relevant Documentation
 =====
-- [`java_proto_library` documentation](https://docs.bazel.build/versions/master/be/java.html#java_proto_library)
-- [`java_grpc_library` documentation](https://grpc.io/docs/reference/java/generated-code.html) (look towards the bottom of the page for a Bazel example)
-- [`java_library` documentation](https://docs.bazel.build/versions/master/be/java.html#java_library)
-- [`java_binary` documentation](https://docs.bazel.build/versions/master/be/java.html#java_binary)
+- [`java_proto_library` documentation](https://registry.bazel.build/modules/protobuf/36.1.bcr.1/docs/bazel/java_proto_library.bzl/java_proto_library)
+- [`java_grpc_library` documentation](https://registry.bazel.build/modules/grpc-java/1.82.0/docs/java_grpc_library.bzl/java_grpc_library)
+- [`java_library` documentation](https://bazel.build/reference/be/java#java_library)
+- [`java_binary` documentation](https://bazel.build/reference/be/java#java_binary)
 
 Questions
 ====
-1. Where is `@io_grpc_grpc_java` coming from?
+1. Where is `@grpc_java` coming from?
 2. Why do we need to add gRPC, protobuf, and local dependencies for our targets?
 3. Why did the code `build` successfully without `netty`, but fail to run?
 
