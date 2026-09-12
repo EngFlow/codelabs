@@ -8,6 +8,8 @@ In this exercise, we will write the rule invocation for the `java_binary` that y
 
     Add the following to your build file.
      ```
+     load("@rules_java//java:java_binary.bzl", "java_binary")
+    
      java_binary(
         name = "HelloBazelBootcamp",
         srcs = ["HelloBazelBootcamp.java"],
@@ -21,10 +23,10 @@ In this exercise, we will write the rule invocation for the `java_binary` that y
 
 ## Questions
 1. Which fields are strictly necessary?
-2. Why did we not have to import `java_binary`?
+2. Why did we have to import `java_binary`?
 
 ## Documentation
-- [`java_binary` documentation](https://docs.bazel.build/versions/master/be/java.html#java_binary)
+- [`java_binary` documentation](https://bazel.build/reference/be/java#java_binary)
 
 ## Next Exercise
 In your terminal, run the following command to get to the next exercise:
