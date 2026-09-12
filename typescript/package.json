@@ -1,7 +1,0 @@
-{
-  "name": "bazel-codelabs",
-  "private": true,
-  "devDependencies": {
-    "typescript": "4.8.4"
-  }
-}
